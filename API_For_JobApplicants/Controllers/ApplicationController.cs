@@ -32,6 +32,15 @@ namespace API_For_JobApplicants.Controllers
             return "Applicant Added";
         }
 
+        [HttpPut]
+        [Route("UpdateApplicant")]
+        public string UpdateApplicant(Applicants applicants)
+        {
+            applicationDbContext.Entry(applicants).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            applicationDbContext.SaveChanges();
+            return "Applicant Updated";
+        }
+
         [HttpDelete]
         [Route("DeleteApplicants")]
         public string DeleteApplicant(int id)
